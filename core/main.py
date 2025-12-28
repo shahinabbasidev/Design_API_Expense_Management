@@ -6,6 +6,11 @@ from contextlib import asynccontextmanager
 from typing import List,Annotated
 from database import Base,engine,get_db,User,Expense
 from sqlalchemy.orm import Session
+from schemas.user_expense_schema import CreateExpenseWithUserSchema
+
+
+
+
 
 
 @asynccontextmanager
@@ -19,7 +24,7 @@ app = FastAPI(lifespan = lifespan)
 
 
 
-@app.post("/expenses",response_model=(UserResponseSchema,ExpenseCreateSchema))
+@app.post("/expenses",response_model=CreateExpenseWithUserSchema)
 def create_expense( request:UserCreateSchema,request2:ExpenseCreateSchema,db:Session = Depends(get_db)):
     
     new_person = User(first_name = request.first_name,last_name = request.last_name,age = request.age)
