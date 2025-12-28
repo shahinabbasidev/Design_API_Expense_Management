@@ -1,8 +1,7 @@
 from fastapi import FastAPI,HTTPException,status,Depends,Query
 from fastapi.responses import JSONResponse
-import random
-from core.user_schemas import UserCreateSchema,UserResponseSchema,UserUpdateSchema
-from core.expense_schemas import ExpenseCreateSchema,ExpenseResponseSchema,ExpenseUpdateSchema
+from schemas.user_schema import UserCreateSchema,UserResponseSchema,UserUpdateSchema
+from schemas.expense_schema import ExpenseCreateSchema,ExpenseResponseSchema,ExpenseUpdateSchema
 from contextlib import asynccontextmanager
 from typing import List,Annotated
 from database import Base,engine,get_db,User,Expense
